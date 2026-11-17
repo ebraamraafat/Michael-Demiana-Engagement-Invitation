@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Michael & Demiana — Our Engagement</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- QR Code Generator Library (Client-Side) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <!-- Luxury Serif, Script & Clean Sans Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            mauve: {
+              50: '#FAF8F7',
+              100: '#F2ECEA',
+              200: '#E2D6D2',
+              300: '#CBB8B2',
+              400: '#AE958E',
+              500: '#91766F',
+              600: '#765D57',
+              700: '#5D4843',
+              800: '#453531',
+              900: '#2E2320',
+            },
+            champagne: '#F6F1EC',
+            ink: '#241E1C',
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            script: ['"Great Vibes"', 'cursive'],
+            sans: ['"Montserrat"', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    /* Base Luxury Embossed & Silk Textures */
+    :root {
+      --mauve-light: #e5d8d4;
+      --mauve-mid: #bfa9a2;
+      --mauve-dark: #876e67;
+      --silk-sheen: rgba(255, 255, 255, 0.55);
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: #1f1918;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: #241e1c;
+      background: radial-gradient(circle at 50% 20%, #3a2e2b 0%, #1c1615 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+      margin: 0;
+    }
+
+    /* Embossed Pleated Paper / Silk Texture Pattern */
+    .embossed-surface {
+      background-color: #d6c5bf;
+      background-image:
+        radial-gradient(ellipse at 30% 20%, rgba(255, 255, 255, 0.42) 0%, transparent 60%),
+        radial-gradient(ellipse at 75% 80%, rgba(93, 72, 67, 0.25) 0%, transparent 65%),
+        repeating-linear-gradient(
+          115deg,
+          rgba(255, 255, 255, 0.14) 0px,
+          rgba(255, 255, 255, 0.14) 2px,
+          rgba(118, 93, 87, 0.08) 3px,
+          rgba(118, 93, 87, 0.08) 7px
+        );
+    }
+
+    .silk-shimmer {
+      background: linear-gradient(
+        135deg,
+        #e8dcd8 0%,
+        #cbb6af 25%,
+        #efe6e3 50%,
+        #bfa8a0 75%,
+        #e5d8d4 100%
+      );
+      background-size: 200% 200%;
+      animation: shimmerFlow 9s ease-in-out infinite;
+    }
+
+    @keyframes shimmerFlow {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    /* Embossed Text Effect */
+    .debossed-text {
+      text-shadow:
+        0px 1px 1px rgba(255, 255, 255, 0.75),
+        0px -1px 1px rgba(70, 50, 45, 0.28);
+    }
+
+    .embossed-card-shadow {
+      box-shadow:
+        0 25px 60px -15px rgba(0, 0, 0, 0.55),
+        inset 0 1px 2px rgba(255, 255, 255, 0.7),
+        inset 0 -2px 6px rgba(93, 72, 67, 0.25);
+    }
+
+    /* ============================================================
+       ENVELOPE & WAX SEAL 3D INTRO OVERLAY
+    ============================================================ */
+    #envelope-stage {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at center, #3b2f2c 0%, #171211 100%);
+      transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.9s ease;
+      perspective: 1400px;
+    }
+
+    #envelope-stage.stage-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .envelope-wrapper {
+      position: relative;
+      width: min(92vw, 430px);
+      height: min(86vh, 690px);
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow:
+        0 30px 70px rgba(0, 0, 0, 0.75),
+        0 0 0 1px rgba(255, 255, 255, 0.14);
+      transform-style: preserve-3d;
+      transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* Inner Satin Ribbon Layer (Revealed after envelope opens) */
+    .inner-ribbon-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 50% 35%, #f3ebe8 0%, #d4c1ba 65%, #b69e96 100%);
+      transition: opacity 0.7s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* Baroque Lace SVG Overlay inside Ribbon Layer */
+    .lace-border-frame {
+      position: absolute;
+      inset: 14px;
+      border: 1.5px solid rgba(118, 93, 87, 0.32);
+      border-radius: 20px;
+      box-shadow:
+        inset 0 0 24px rgba(255, 255, 255, 0.65),
+        0 1px 2px rgba(255, 255, 255, 0.5);
+      pointer-events: none;
+    }
+
+    /* Satin Horizontal & Vertical Ribbon Bands */
+    .ribbon-band-h {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      height: 34px;
+      transform: translateY(-50%);
+      background: linear-gradient(
+        180deg,
+        #cbb6af 0%,
+        #f5ece9 30%,
+        #dfd0cb 55%,
+        #a88e86 100%
+      );
+      box-shadow: 0 6px 16px rgba(58, 43, 39, 0.25);
+      transition: transform 0.85s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.6s ease;
+    }
+
+    .ribbon-band-v {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 34px;
+      transform: translateX(-50%);
+      background: linear-gradient(
+        90deg,
+        #cbb6af 0%,
+        #f5ece9 30%,
+        #dfd0cb 55%,
+        #a88e86 100%
+      );
+      box-shadow: 4px 0 16px rgba(58, 43, 39, 0.2);
+      transition: transform 0.85s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.6s ease;
+    }
+
+    .ribbon-untying .ribbon-band-h {
+      transform: translateY(-50%) scaleX(0);
+      opacity: 0;
+    }
+
+    .ribbon-untying .ribbon-band-v {
+      transform: translateX(-50%) scaleY(0);
+      opacity: 0;
+    }
+
+    .ribbon-bow-btn {
+      position: relative;
+      z-index: 15;
+      cursor: pointer;
+      transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease;
+      filter: drop-shadow(0 10px 18px rgba(69, 53, 49, 0.35));
+    }
+
+    .ribbon-bow-btn:hover {
+      transform: scale(1.06);
+    }
+
+    .ribbon-untying .ribbon-bow-btn {
+      transform: scale(1.35) rotate(12deg);
+      opacity: 0;
+    }
+
+    /* Envelope Flaps (4-piece botanical pleated envelope) */
+    .envelope-flap-top,
+    .envelope-flap-bottom,
+    .envelope-flap-left,
+    .envelope-flap-right {
+      position: absolute;
+      inset: 0;
+      z-index: 20;
+      transition: transform 1.05s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s ease;
+      pointer-events: none;
+    }
+
+    /* Textured Botanical Pleat SVG Fill */
+    .envelope-flap-top {
+      clip-path: polygon(0 0, 100% 0, 50% 53%);
+      transform-origin: top center;
+      filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.35));
+      z-index: 24;
+    }
+
+    .envelope-flap-bottom {
+      clip-path: polygon(0 100%, 100% 100%, 50% 47%);
+      transform-origin: bottom center;
+      filter: drop-shadow(0 -6px 14px rgba(0, 0, 0, 0.28));
+      z-index: 23;
+    }
+
+    .envelope-flap-left {
+      clip-path: polygon(0 0, 52% 50%, 0 100%);
+      transform-origin: left center;
+      filter: drop-shadow(5px 0 12px rgba(0, 0, 0, 0.25));
+      z-index: 22;
+    }
+
+    .envelope-flap-right {
+      clip-path: polygon(100% 0, 48% 50%, 100% 100%);
+      transform-origin: right center;
+      filter: drop-shadow(-5px 0 12px rgba(0, 0, 0, 0.25));
+      z-index: 22;
+    }
+
+    .envelope-opened .envelope-flap-top {
+      transform: rotateX(175deg) translateY(-100%);
+      opacity: 0;
+    }
+
+    .envelope-opened .envelope-flap-bottom {
+      transform: rotateX(-175deg) translateY(100%);
+      opacity: 0;
+    }
+
+    .envelope-opened .envelope-flap-left {
+      transform: rotateY(-170deg) translateX(-100%);
+      opacity: 0;
+    }
+
+    .envelope-opened .envelope-flap-right {
+      transform: rotateY(170deg) translateX(100%);
+      opacity: 0;
+    }
+
+    /* Metallic Taupe-Bronze Wax Seal */
+    .wax-seal-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 30;
+      cursor: pointer;
+      transition: transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.55s ease;
+    }
+
+    .wax-seal-container:hover {
+      transform: translate(-50%, -50%) scale(1.06);
+    }
+
+    .wax-seal-container:active {
+      transform: translate(-50%, -50%) scale(0.95);
+    }
+
+    .envelope-opened .wax-seal-container {
+      transform: translate(-50%, -140%) scale(0.75);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .pulse-ring {
+      animation: sealPulse 2.4s infinite;
+    }
+
+    @keyframes sealPulse {
+      0% { transform: scale(0.95); opacity: 0.7; }
+      70% { transform: scale(1.22); opacity: 0; }
+      100% { transform: scale(1.22); opacity: 0; }
+    }
+
+    /* ============================================================
+       MAIN SCROLLABLE INVITATION CARD
+    ============================================================ */
+    .invitation-shell {
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      background-color: #faf7f5;
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.65);
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (min-width: 640px) {
+      .invitation-shell {
+        margin-top: 24px;
+        margin-bottom: 36px;
+        border-radius: 32px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+      }
+    }
+
+    /* Scroll Reveal Utility */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Scratch Card Canvas */
+    #scratch-canvas {
+      touch-action: none;
+      cursor: grab;
+    }
+    #scratch-canvas:active {
+      cursor: grabbing;
+    }
+
+    /* Custom Subtle Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1f1918;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #91766f;
+      border-radius: 999px;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-mauve-300 selection:text-ink">
+
+  <!-- Ambient Floating Music Toggle Button -->
+  <button
+    id="music-toggle-btn"
+    aria-label="Toggle Background Music"
+    title="Toggle Romantic Melody"
+    class="fixed bottom-5 right-5 z-40 w-12 h-12 rounded-full bg-mauve-800/90 backdrop-blur-md text-champagne border border-mauve-300/40 shadow-xl flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95"
+  >
+    <!-- Music Notes / Mute SVG -->
+    <svg id="music-icon-on" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z" />
+    </svg>
+    <svg id="music-icon-off" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+      <path stroke-linecap="round" stroke-linejoin="round" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+    </svg>
+  </button>
+
+  <!-- Toast Notification Banner (Replaces alert()) -->
+  <div
+    id="toast-banner"
+    class="fixed top-5 left-1/2 -translate-x-1/2 z-50 px-5 py-3 rounded-full bg-mauve-900/95 text-champagne text-xs sm:text-sm font-medium tracking-wide shadow-2xl border border-mauve-400/30 opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-2"
+  >
+    <span id="toast-message">Notification</span>
+  </div>
+
+  <!-- =====================================================================
+       STEP 1 & 2: INTERACTIVE 3D WAX-SEALED ENVELOPE & SATIN RIBBON STAGE
+  ====================================================================== -->
+  <div id="envelope-stage">
+    <div id="envelope-card" class="envelope-wrapper">
+      
+      <!-- LAYER B (Underneath Envelope Flaps): Silk & Baroque Lace Card Tied with Satin Ribbon -->
+      <div id="ribbon-layer" class="inner-ribbon-layer silk-shimmer">
+        <div class="lace-border-frame"></div>
+
+        <!-- Decorative Corner Roses SVG -->
+        <svg class="absolute top-5 left-5 w-20 h-20 text-mauve-600/35 pointer-events-none" viewBox="0 0 100 100" fill="none">
+          <path d="M10 90 C10 40, 40 10, 90 10" stroke="currentColor" stroke-width="1.5" />
+          <circle cx="28" cy="28" r="14" stroke="currentColor" stroke-width="1.2" />
+          <path d="M22 28 C22 22, 34 22, 34 28 C34 34, 22 34, 22 28 Z" stroke="currentColor" stroke-width="1.2" />
+          <path d="M46 16 C52 12, 58 18, 52 24 C46 24, 44 19, 46 16 Z" fill="currentColor" opacity="0.3" />
+          <path d="M16 46 C12 52, 18 58, 24 52 C24 46, 19 44, 16 46 Z" fill="currentColor" opacity="0.3" />
+        </svg>
+        <svg class="absolute bottom-5 right-5 w-20 h-20 text-mauve-600/35 rotate-180 pointer-events-none" viewBox="0 0 100 100" fill="none">
+          <path d="M10 90 C10 40, 40 10, 90 10" stroke="currentColor" stroke-width="1.5" />
+          <circle cx="28" cy="28" r="14" stroke="currentColor" stroke-width="1.2" />
+          <path d="M22 28 C22 22, 34 22, 34 28 C34 34, 22 34, 22 28 Z" stroke="currentColor" stroke-width="1.2" />
+          <path d="M46 16 C52 12, 58 18, 52 24 C46 24, 44 19, 46 16 Z" fill="currentColor" opacity="0.3" />
+          <path d="M16 46 C12 52, 18 58, 24 52 C24 46, 19 44, 16 46 Z" fill="currentColor" opacity="0.3" />
+        </svg>
+
+        <p class="font-serif italic text-mauve-700 text-lg tracking-wide mb-32 z-10 debossed-text">
+          Michael &amp; Demiana
+        </p>
+
+        <!-- Crossed Satin Ribbons -->
+        <div class="ribbon-band-h"></div>
+        <div class="ribbon-band-v"></div>
+
+        <!-- Interactive Satin Bow Button -->
+        <button
+          id="untie-ribbon-btn"
+          type="button"
+          aria-label="Untie Satin Ribbon"
+          class="ribbon-bow-btn flex flex-col items-center focus:outline-none"
+        >
+          <svg width="160" height="110" viewBox="0 0 160 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="satinBowGrad" x1="0" y1="0" x2="160" y2="110" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#B99F97" />
+                <stop offset="35%" stop-color="#F7EFEA" />
+                <stop offset="65%" stop-color="#D2BEB7" />
+                <stop offset="100%" stop-color="#8C7169" />
+              </linearGradient>
+              <linearGradient id="satinFoldGrad" x1="80" y1="20" x2="80" y2="90" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#8B7068" stop-opacity="0.55" />
+                <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.7" />
+                <stop offset="100%" stop-color="#6F564F" stop-opacity="0.6" />
+              </linearGradient>
+            </defs>
+            <!-- Ribbon Tails -->
+            <path d="M74 56 L42 102 L58 98 L79 62 Z" fill="url(#satinBowGrad)" />
+            <path d="M86 56 L118 102 L102 98 L81 62 Z" fill="url(#satinBowGrad)" />
+            <!-- Left Loop -->
+            <path d="M76 50 C45 18, 12 24, 16 52 C20 76, 52 68, 76 54 Z" fill="url(#satinBowGrad)" stroke="#9A8078" stroke-width="0.8" />
+            <path d="M72 51 C48 32, 26 36, 28 50 C30 62, 50 58, 72 52 Z" fill="url(#satinFoldGrad)" />
+            <!-- Right Loop -->
+            <path d="M84 50 C115 18, 148 24, 144 52 C140 76, 108 68, 84 54 Z" fill="url(#satinBowGrad)" stroke="#9A8078" stroke-width="0.8" />
+            <path d="M88 51 C112 32, 134 36, 132 50 C130 62, 110 58, 88 52 Z" fill="url(#satinFoldGrad)" />
+            <!-- Center Knot -->
+            <rect x="70" y="42" width="20" height="22" rx="7" fill="url(#satinBowGrad)" stroke="#8E736B" stroke-width="1" />
+          </svg>
+          <span class="mt-3 px-4 py-1.5 rounded-full bg-white/75 backdrop-blur-sm text-mauve-800 text-[11px] font-medium uppercase tracking-[0.2em] shadow-sm border border-mauve-300/60">
+            Tap bow to untie
+          </span>
+        </button>
+
+        <p class="font-sans text-[11px] uppercase tracking-[0.25em] text-mauve-700/80 mt-28 z-10">
+          20 • 11 • 2026
+        </p>
+      </div>
+
+      <!-- LAYER A (Front): Embossed Botanical Pleated Envelope Flaps -->
+      <div class="envelope-flap-left embossed-surface"></div>
+      <div class="envelope-flap-right embossed-surface"></div>
+      <div class="envelope-flap-bottom embossed-surface"></div>
+      <div class="envelope-flap-top embossed-surface">
+        <!-- Subtle Embossed Leaf Vein Lines on Top Flap -->
+        <svg class="w-full h-full opacity-30" viewBox="0 0 400 400" preserveAspectRatio="none">
+          <path d="M200 212 L80 20 M200 212 L140 10 M200 212 L200 5 M200 212 L260 10 M200 212 L320 20" stroke="#5d4843" stroke-width="1.2" />
+          <path d="M202 212 L82 22 M202 212 L262 12" stroke="#ffffff" stroke-width="1" />
+        </svg>
+      </div>
+
+      <!-- Interactive Embossed Wax Seal ("M & D") -->
+      <div id="wax-seal-btn" class="wax-seal-container flex flex-col items-center" role="button" tabindex="0" aria-label="Open Engagement Invitation">
+        <div class="relative flex items-center justify-center">
+          <div class="pulse-ring absolute w-28 h-28 rounded-full border-2 border-white/60"></div>
+          <!-- Realistic Irregular Wax Seal SVG -->
+          <svg width="116" height="116" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="drop-shadow-[0_14px_22px_rgba(30,20,18,0.65)]">
+            <defs>
+              <radialGradient id="waxMetal" cx="35%" cy="30%" r="70%">
+                <stop offset="0%" stop-color="#A8928B" />
+                <stop offset="45%" stop-color="#76605A" />
+                <stop offset="85%" stop-color="#52403B" />
+                <stop offset="100%" stop-color="#3C2D29" />
+              </radialGradient>
+              <linearGradient id="waxRim" x1="20" y1="20" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#D7C4BE" stop-opacity="0.7" />
+                <stop offset="50%" stop-color="#5D4843" stop-opacity="0.3" />
+                <stop offset="100%" stop-color="#E7D7D2" stop-opacity="0.6" />
+              </linearGradient>
+            </defs>
+            <!-- Organic Wax Blob Perimeter -->
+            <path
+              d="M60 6 C72 5, 84 10, 94 17 C104 24, 113 35, 115 48 C117 61, 114 75, 107 86 C100 97, 89 107, 76 111 C63 115, 48 115, 36 109 C24 103, 13 93, 9 80 C5 67, 6 52, 12 39 C18 26, 28 16, 40 11 C47 8, 53 6, 60 6 Z"
+              fill="url(#waxMetal)"
+            />
+            <!-- Inner Pressed Stamp Ring -->
+            <circle cx="60" cy="60" r="41" stroke="url(#waxRim)" stroke-width="3.5" fill="#634F49" fill-opacity="0.45" />
+            <circle cx="60" cy="60" r="36" stroke="#3D2E2A" stroke-width="1" stroke-dasharray="2 2" opacity="0.6" />
+            <!-- Embossed Monogram M & D -->
+            <text
+              x="60"
+              y="66"
+              text-anchor="middle"
+              fill="#E5D5D0"
+              font-family="'Great Vibes', cursive"
+              font-size="31"
+              letter-spacing="1"
+              style="filter: drop-shadow(0px 1px 1px rgba(25,18,16,0.85));"
+            >
+              M&amp;D
+            </text>
+          </svg>
+        </div>
+
+        <span class="mt-4 px-4 py-1.5 rounded-full bg-mauve-900/75 backdrop-blur-md text-champagne text-[11px] font-medium uppercase tracking-[0.22em] border border-white/20 shadow-lg">
+          Tap seal to open
+        </span>
+      </div>
+
+      <!-- Subtle Skip Intro Button -->
+      <button
+        id="skip-intro-btn"
+        type="button"
+        class="absolute bottom-4 right-4 z-30 text-[11px] uppercase tracking-widest text-mauve-900/70 hover:text-mauve-900 bg-white/50 backdrop-blur-sm px-3 py-1 rounded-full transition"
+      >
+        Skip
+      </button>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       MAIN LUXURY DIGITAL ENGAGEMENT INVITATION
+  ====================================================================== -->
+  <main id="main-invitation" class="invitation-shell">
+
+    <!-- SECTION 1: EMBOSSED FLORAL HERO & CUSTOM COUPLE ILLUSTRATION -->
+    <section class="relative pt-10 pb-12 px-6 text-center bg-gradient-to-b from-[#EDE4E0] via-[#F9F6F4] to-[#FAF7F5] overflow-hidden">
+      
+      <!-- Top & Bottom Embossed Baroque Floral Frame Corners -->
+      <svg class="w-full max-w-[340px] mx-auto mb-3 text-mauve-500/55" viewBox="0 0 360 56" fill="none">
+        <path d="M10 46 C60 46, 95 12, 180 12 C265 12, 300 46, 350 46" stroke="currentColor" stroke-width="1.2" />
+        <path d="M40 48 C85 48, 115 22, 180 22 C245 22, 275 48, 320 48" stroke="currentColor" stroke-width="0.7" stroke-dasharray="3 3" />
+        <circle cx="180" cy="12" r="4" fill="currentColor" />
+        <path d="M166 14 C172 8, 188 8, 194 14" stroke="currentColor" stroke-width="1.2" />
+      </svg>
+
+      <!-- Playful Announcement Header -->
+      <div class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white/85 border border-mauve-200 shadow-sm mb-4">
+        <span class="text-xs font-medium tracking-wide text-mauve-700">Okay it's official 🙈💍</span>
+      </div>
+
+      <!-- Couple Names -->
+      <p class="font-sans text-[11px] uppercase tracking-[0.32em] text-mauve-600 font-medium mb-1">
+        MICHAEL &amp; DEMIANA
+      </p>
+      <h1 class="font-serif text-4xl sm:text-[42px] font-semibold tracking-tight text-ink leading-tight mb-2">
+        OUR ENGAGEMENT
+      </h1>
+      <p class="font-serif italic text-xl text-mauve-700 mb-6">
+        Michael &amp; Demiana are getting engaged!
+      </p>
+
+      <!-- Custom Stylized Black & White Couple Line-Art Illustration (Matching Uploaded Card) -->
+      <div class="relative mx-auto w-full max-w-[310px] my-2">
+        <div class="rounded-3xl bg-white/90 p-4 border border-mauve-200/80 shadow-[0_12px_32px_rgba(118,93,87,0.12)]">
+          <svg viewBox="0 0 320 245" class="w-full h-auto" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Sparkle Heart Above Couple -->
+            <g stroke="#241E1C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M160 35 C156 26, 143 27, 144 37 C145 45, 160 53, 160 53 C160 53, 175 45, 176 37 C177 27, 164 26, 160 35 Z" fill="#F2ECEA" />
+              <line x1="160" y1="15" x2="160" y2="20" />
+              <line x1="142" y1="20" x2="145" y2="24" />
+              <line x1="178" y1="20" x2="175" y2="24" />
+              <line x1="134" y1="34" x2="138" y2="35" />
+              <line x1="186" y1="34" x2="182" y2="35" />
+            </g>
+
+            <!-- LEFT PERSON: DEMIANA (Wavy Long Hair, Sunglasses, Pearl Necklace, Leaning on Hand) -->
+            <g id="bride-illustration" stroke="#241E1C" stroke-linecap="round" stroke-linejoin="round">
+              <!-- Flowing Wavy Hair Back -->
+              <path d="M72 86 C54 102, 46 136, 52 168 C55 182, 48 192, 54 202" stroke-width="2.4" />
+              <path d="M64 114 C56 135, 58 158, 63 178" stroke-width="1.5" />
+              <path d="M132 88 C142 108, 144 134, 138 156" stroke-width="2.2" />
+              <!-- Face & Chin -->
+              <path d="M80 94 C79 116, 87 132, 103 133 C119 132, 127 116, 126 94" stroke-width="2.2" fill="#FFFFFF" />
+              <!-- Hair Top & Parting -->
+              <path d="M75 98 C74 72, 92 62, 108 64 C124 66, 134 78, 131 98 C124 85, 112 80, 102 82 C92 84, 82 90, 75 98 Z" fill="#241E1C" stroke-width="2" />
+              <!-- Stylish Cat-Eye Sunglasses -->
+              <path d="M81 97 L125 99" stroke-width="2.2" />
+              <path d="M83 97 C83 108, 97 109, 100 99 Z" fill="#241E1C" stroke-width="1.8" />
+              <path d="M106 99 C108 109, 122 109, 123 99 Z" fill="#241E1C" stroke-width="1.8" />
+              <!-- Glare lines on sunglasses -->
+              <line x1="87" y1="100" x2="91" y2="104" stroke="#FFFFFF" stroke-width="1.2" />
+              <line x1="110" y1="101" x2="114" y2="105" stroke="#FFFFFF" stroke-width="1.2" />
+              <!-- Happy Smile -->
+              <path d="M95 117 Q103 124 111 117" stroke-width="2" fill="none" />
+              <path d="M96 118 Q103 122 110 118" stroke-width="1.2" />
+              <!-- Neck & Pearl Necklace -->
+              <path d="M95 133 L93 148 M112 133 L115 147" stroke-width="2" />
+              <path d="M90 148 Q104 157 118 147" stroke-width="2" stroke-dasharray="1 4.5" />
+              <!-- Shoulders & Sleeveless Top -->
+              <path d="M74 162 C82 151, 92 149, 104 152 C116 154, 128 155, 136 168 L140 202 L68 202 Z" fill="#FFFFFF" stroke-width="2.2" />
+              <!-- Arm & Hand Resting on Cheek -->
+              <path d="M72 198 L74 154 C74 142, 76 124, 79 114 C81 108, 86 111, 85 118 L83 138" fill="#FFFFFF" stroke-width="2.1" />
+              <path d="M85 122 L91 156 L82 198" stroke-width="2" />
+            </g>
+
+            <!-- RIGHT PERSON: MICHAEL (Beard, Sunglasses, Watch, Leaning on Hand + Holding Glass) -->
+            <g id="groom-illustration" stroke="#241E1C" stroke-linecap="round" stroke-linejoin="round">
+              <!-- Styled Hair -->
+              <path d="M182 82 C180 62, 196 52, 214 54 C232 56, 242 66, 238 84 C230 74, 216 70, 202 72 C192 74, 186 78, 182 82 Z" fill="#241E1C" stroke-width="2" />
+              <!-- Face & Jaw with Beard -->
+              <path d="M185 84 C184 108, 193 125, 210 126 C227 125, 236 108, 235 84" fill="#FFFFFF" stroke-width="2.2" />
+              <!-- Beard & Mustache -->
+              <path d="M186 104 C188 120, 198 127, 210 127 C222 127, 232 120, 234 104" stroke-width="3.2" />
+              <path d="M198 112 Q210 107 222 112" stroke-width="2.4" />
+              <!-- Smile -->
+              <path d="M201 115 Q210 122 219 115" stroke-width="2" fill="#FFFFFF" />
+              <!-- Wayfarer Sunglasses -->
+              <path d="M184 87 L236 85" stroke-width="2.4" />
+              <rect x="187" y="86" width="19" height="12" rx="3" fill="#241E1C" />
+              <rect x="213" y="85" width="19" height="12" rx="3" fill="#241E1C" />
+              <line x1="191" y1="89" x2="195" y2="93" stroke="#FFFFFF" stroke-width="1.2" />
+              <line x1="217" y1="88" x2="221" y2="92" stroke="#FFFFFF" stroke-width="1.2" />
+              <!-- Collared Shirt & Shoulders -->
+              <path d="M164 162 C174 146, 190 140, 210 140 C230 140, 252 148, 264 168 L268 202 L156 202 Z" fill="#FFFFFF" stroke-width="2.2" />
+              <path d="M196 141 L210 158 L224 141" stroke-width="2" />
+              <line x1="210" y1="158" x2="210" y2="202" stroke-width="1.6" />
+              <!-- Right Arm Resting on Cheek with Wristwatch -->
+              <path d="M258 200 L254 146 C252 130, 246 112, 241 102 C238 97, 232 100, 234 107 L238 130" fill="#FFFFFF" stroke-width="2.1" />
+              <!-- Wristwatch -->
+              <rect x="234" y="131" width="15" height="7" rx="2" transform="rotate(-14 234 131)" fill="#241E1C" />
+              <path d="M235 138 L226 174 L238 202" stroke-width="2" />
+            </g>
+
+            <!-- CELEBRATORY DRINKS ON TABLE -->
+            <!-- Martini / Champagne Coupe Glass in Front of Demiana -->
+            <g stroke="#241E1C" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="103,166 137,166 120,185" fill="#FFFFFF" />
+              <line x1="107" y1="171" x2="133" y2="171" stroke-width="1.2" />
+              <circle cx="121" cy="176" r="2" fill="#241E1C" />
+              <line x1="120" y1="185" x2="120" y2="203" />
+              <ellipse cx="120" cy="203" rx="11" ry="2.5" fill="#FFFFFF" />
+            </g>
+
+            <!-- Rocks / Celebration Glass Held by Michael -->
+            <g stroke="#241E1C" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="176" y="175" width="22" height="27" rx="2" fill="#FFFFFF" />
+              <line x1="177" y1="184" x2="197" y2="184" stroke-width="1.2" />
+              <rect x="181" y="187" width="6" height="6" transform="rotate(12 181 187)" stroke-width="1.2" />
+              <rect x="188" y="190" width="6" height="6" transform="rotate(-10 188 190)" stroke-width="1.2" />
+              <!-- Hand Fingers Holding Glass -->
+              <path d="M172 183 C168 183, 168 188, 175 188" fill="#FFFFFF" />
+              <path d="M171 189 C167 189, 167 194, 175 194" fill="#FFFFFF" />
+              <path d="M172 195 C168 195, 168 200, 175 200" fill="#FFFFFF" />
+            </g>
+
+            <!-- Curved Table Line -->
+            <path d="M36 208 Q160 197 284 208" stroke="#241E1C" stroke-width="2.4" stroke-linecap="round" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Date & Time Highlight -->
+      <div class="mt-6">
+        <p class="font-serif text-2xl sm:text-3xl font-bold tracking-[0.18em] text-ink">
+          20 • 11 • 2026
+        </p>
+        <p class="font-sans text-xs sm:text-sm font-medium uppercase tracking-[0.26em] text-mauve-700 mt-1.5">
+          FRIDAY &nbsp;•&nbsp; 7:00 PM
+        </p>
+        <p class="font-serif italic text-lg text-mauve-800 mt-4 max-w-xs mx-auto leading-relaxed">
+          And it won't be the same without you 🤍
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 2: EMBOSSED COUNTDOWN TIMER -->
+    <section class="reveal-on-scroll relative py-10 px-6 embossed-surface text-center border-y border-mauve-300/60">
+      <p class="font-script text-3xl text-mauve-900 debossed-text mb-1">
+        Counting Down
+      </p>
+      <p class="font-sans text-[10px] uppercase tracking-[0.28em] text-mauve-800/80 mb-5">
+        Until We Say Yes Forever
+      </p>
+
+      <!-- Vintage Ticket-Style Countdown Card (Inspired by Video) -->
+      <div class="max-w-sm mx-auto bg-white/85 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-mauve-300/80 shadow-[0_12px_28px_rgba(69,53,49,0.16)]">
+        <div class="grid grid-cols-4 gap-2 divide-x divide-mauve-200">
+          <div class="px-1">
+            <span id="cd-days" class="block font-serif text-3xl sm:text-4xl font-semibold text-ink">00</span>
+            <span class="block font-sans text-[9px] uppercase tracking-[0.2em] text-mauve-600 mt-1">Days</span>
+          </div>
+          <div class="px-1">
+            <span id="cd-hours" class="block font-serif text-3xl sm:text-4xl font-semibold text-ink">00</span>
+            <span class="block font-sans text-[9px] uppercase tracking-[0.2em] text-mauve-600 mt-1">Hours</span>
+          </div>
+          <div class="px-1">
+            <span id="cd-minutes" class="block font-serif text-3xl sm:text-4xl font-semibold text-ink">00</span>
+            <span class="block font-sans text-[9px] uppercase tracking-[0.2em] text-mauve-600 mt-1">Minutes</span>
+          </div>
+          <div class="px-1">
+            <span id="cd-seconds" class="block font-serif text-3xl sm:text-4xl font-semibold text-ink">00</span>
+            <span class="block font-sans text-[9px] uppercase tracking-[0.2em] text-mauve-600 mt-1">Seconds</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="font-script text-2xl text-mauve-900 mt-5 debossed-text">
+        See you soon!
+      </p>
+    </section>
+
+    <!-- SECTION 3: INTERACTIVE OVAL SCRATCH-TO-REVEAL CARD (FROM VIDEO) -->
+    <section class="reveal-on-scroll py-12 px-6 bg-[#FAF7F5] text-center">
+      <p class="font-sans text-[10px] uppercase tracking-[0.28em] text-mauve-600 mb-1">
+        A Little Surprise
+      </p>
+      <h2 class="font-serif text-3xl font-semibold text-ink mb-2">
+        Scratch to Reveal
+      </h2>
+      <p class="text-xs text-mauve-600 mb-6">
+        Rub the silver foil below with your finger or cursor ✨
+      </p>
+
+      <!-- Oval Embossed Frame with Interactive Canvas Scratch Layer -->
+      <div class="relative mx-auto w-[250px] h-[310px] rounded-[50%] p-3 bg-gradient-to-b from-mauve-200 via-white to-mauve-300 shadow-[0_18px_38px_rgba(93,72,67,0.22)] border border-mauve-300">
+        <div class="relative w-full h-full rounded-[50%] overflow-hidden bg-gradient-to-br from-[#F8F2EF] to-[#E6D8D3] flex flex-col items-center justify-center p-6 text-center shadow-inner">
+          
+          <!-- Hidden Underlying Reveal Content -->
+          <div class="select-none pointer-events-none">
+            <span class="text-3xl block mb-2">🥂💍</span>
+            <p class="font-script text-3xl text-mauve-800 leading-tight mb-2">
+              Save the Date!
+            </p>
+            <p class="font-serif text-base font-semibold text-ink leading-snug">
+              20 • 11 • 2026<br />at 7:00 PM
+            </p>
+            <p class="font-sans text-[10px] uppercase tracking-[0.18em] text-mauve-700 mt-3">
+              We can't wait to celebrate with you!
+            </p>
+          </div>
+
+          <!-- Interactive Foil Canvas -->
+          <canvas
+            id="scratch-canvas"
+            class="absolute inset-0 w-full h-full rounded-[50%] transition-opacity duration-700"
+          ></canvas>
+        </div>
+      </div>
+
+      <button
+        id="reset-scratch-btn"
+        type="button"
+        class="mt-4 text-[11px] uppercase tracking-widest text-mauve-600 hover:text-mauve-900 underline underline-offset-4 transition"
+      >
+        Reset Foil
+      </button>
+    </section>
+
+    <!-- SECTION 4: LOCATION, SCANNABLE QR CODE & CALENDAR -->
+    <section class="reveal-on-scroll py-12 px-6 bg-gradient-to-b from-[#F3ECE9] to-[#FAF7F5] border-t border-mauve-200/70 text-center">
+      <p class="font-sans text-[10px] uppercase tracking-[0.28em] text-mauve-600 mb-1">
+        Where We Celebrate
+      </p>
+      <h2 class="font-serif text-3xl font-semibold text-ink mb-2">
+        Location &amp; Details
+      </h2>
+      <p class="font-serif italic text-lg text-mauve-700 max-w-xs mx-auto mb-6">
+        We are delighted to invite you to celebrate our engagement
+      </p>
+
+      <!-- Card Container -->
+      <div class="max-w-sm mx-auto bg-white rounded-3xl p-6 border border-mauve-200 shadow-[0_14px_34px_rgba(93,72,67,0.1)]">
+        <!-- Date & Time Pill Row -->
+        <div class="flex items-center justify-center gap-3 text-xs font-medium text-mauve-800 bg-mauve-50 py-2.5 px-4 rounded-2xl border border-mauve-200/60 mb-6">
+          <span>📅 Friday, 20/11/2026</span>
+          <span class="text-mauve-300">|</span>
+          <span>🕖 7:00 PM</span>
+        </div>
+
+        <!-- Scannable QR Code matching uploaded card -->
+        <div class="flex flex-col items-center justify-center mb-5">
+          <div class="p-3.5 bg-white rounded-2xl border-2 border-ink/90 shadow-sm">
+            <div id="location-qrcode" class="w-[144px] h-[144px] flex items-center justify-center"></div>
+          </div>
+          <p class="font-sans text-[10px] font-semibold uppercase tracking-[0.26em] text-ink mt-3">
+            SCAN FOR LOCATION
+          </p>
+          <div class="w-10 h-[1.5px] bg-ink/80 mt-2"></div>
+        </div>
+
+        <!-- Primary Action Buttons -->
+        <div class="flex flex-col gap-2.5 mt-4">
+          <a
+            href="https://maps.app.goo.gl/RQ1gkwACpPt5XA6s7"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full py-3.5 px-5 rounded-2xl bg-mauve-800 hover:bg-mauve-900 text-champagne font-sans text-xs font-medium uppercase tracking-[0.2em] shadow-md transition flex items-center justify-center gap-2"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            Open Google Maps
+          </a>
+
+          <div class="grid grid-cols-2 gap-2.5">
+            <button
+              id="add-calendar-btn"
+              type="button"
+              class="py-3 px-3 rounded-2xl bg-mauve-100 hover:bg-mauve-200/80 text-mauve-900 font-sans text-[11px] font-medium uppercase tracking-[0.14em] transition flex items-center justify-center gap-1.5"
+            >
+              <span>🗓️ Save Date</span>
+            </button>
+            <button
+              id="copy-link-btn"
+              type="button"
+              class="py-3 px-3 rounded-2xl bg-mauve-100 hover:bg-mauve-200/80 text-mauve-900 font-sans text-[11px] font-medium uppercase tracking-[0.14em] transition flex items-center justify-center gap-1.5"
+            >
+              <span>📋 Copy Map Link</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: THE EVENING TIMELINE (INSPIRED BY "THE DAY" IN VIDEO) -->
+    <section class="reveal-on-scroll py-12 px-6 embossed-surface border-y border-mauve-300/60 text-center">
+      <p class="font-script text-4xl text-mauve-900 debossed-text mb-1">
+        The Evening
+      </p>
+      <p class="font-serif italic text-base text-mauve-800 max-w-xs mx-auto mb-8">
+        Come celebrate, dance and take way too many photos with us 💃🕺
+      </p>
+
+      <!-- Vertical Timeline -->
+      <div class="max-w-xs mx-auto relative text-left pl-7 border-l border-mauve-700/40 space-y-7">
+        <!-- Milestone 1 -->
+        <div class="relative">
+          <span class="absolute -left-[33px] top-1 w-3 h-3 rounded-full bg-mauve-800 ring-4 ring-white/70"></span>
+          <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-mauve-800">
+            7:00 PM
+          </p>
+          <h3 class="font-serif text-xl font-semibold text-ink">
+            Arrival &amp; Welcome Drinks
+          </h3>
+          <p class="text-xs text-mauve-800/80 mt-0.5">
+            Gather, mingle, and kick off the celebration together.
+          </p>
+        </div>
+
+        <!-- Milestone 2 -->
+        <div class="relative">
+          <span class="absolute -left-[33px] top-1 w-3 h-3 rounded-full bg-mauve-800 ring-4 ring-white/70"></span>
+          <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-mauve-800">
+            8:00 PM
+          </p>
+          <h3 class="font-serif text-xl font-semibold text-ink">
+            Engagement Celebration &amp; Rings
+          </h3>
+          <p class="text-xs text-mauve-800/80 mt-0.5">
+            Making it official surrounded by our favorite people 💍
+          </p>
+        </div>
+
+        <!-- Milestone 3 -->
+        <div class="relative">
+          <span class="absolute -left-[33px] top-1 w-3 h-3 rounded-full bg-mauve-800 ring-4 ring-white/70"></span>
+          <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-mauve-800">
+            9:00 PM — Late
+          </p>
+          <h3 class="font-serif text-xl font-semibold text-ink">
+            Dancing &amp; Photo Memories
+          </h3>
+          <p class="text-xs text-mauve-800/80 mt-0.5">
+            Hit the dance floor and take way too many photos with us 🥳
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: INTERACTIVE RSVP & GUEST WISHES WALL -->
+    <section class="reveal-on-scroll py-12 px-6 bg-[#2B2220] text-champagne">
+      <div class="text-center mb-7">
+        <p class="font-sans text-[10px] uppercase tracking-[0.3em] text-mauve-300 mb-1">
+          Be Our Guest
+        </p>
+        <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-white mb-2">
+          RSVP
+        </h2>
+        <p class="font-serif italic text-base text-mauve-200 max-w-xs mx-auto">
+          Nothing would make us happier than being surrounded by our loved ones. Let us know if you can make it!
+        </p>
+      </div>
+
+      <!-- RSVP Form Card -->
+      <form id="rsvp-form" class="max-w-sm mx-auto bg-white/10 backdrop-blur-md rounded-3xl p-6 border border-white/15 space-y-4">
+        <div>
+          <label for="guest-name" class="block font-sans text-[11px] uppercase tracking-[0.18em] text-mauve-200 mb-1.5">
+            Your Full Name *
+          </label>
+          <input
+            id="guest-name"
+            type="text"
+            required
+            placeholder="e.g., Sarah & Mark"
+            class="w-full px-4 py-3 rounded-2xl bg-white/95 text-ink placeholder-mauve-400 text-sm focus:outline-none focus:ring-2 focus:ring-mauve-300"
+          />
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label for="guest-status" class="block font-sans text-[11px] uppercase tracking-[0.18em] text-mauve-200 mb-1.5">
+              Attendance
+            </label>
+            <select
+              id="guest-status"
+              class="w-full px-3 py-3 rounded-2xl bg-white/95 text-ink text-sm focus:outline-none focus:ring-2 focus:ring-mauve-300"
+            >
+              <option value="Joyfully Accepts">Joyfully Accepts 🥂</option>
+              <option value="Regretfully Declines">Can't Make It 🤍</option>
+            </select>
+          </div>
+          <div>
+            <label for="guest-count" class="block font-sans text-[11px] uppercase tracking-[0.18em] text-mauve-200 mb-1.5">
+              Guests
+            </label>
+            <select
+              id="guest-count"
+              class="w-full px-3 py-3 rounded-2xl bg-white/95 text-ink text-sm focus:outline-none focus:ring-2 focus:ring-mauve-300"
+            >
+              <option value="1">1 Guest</option>
+              <option value="2">2 Guests</option>
+              <option value="3">3 Guests</option>
+              <option value="4">4 Guests</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label for="guest-wish" class="block font-sans text-[11px] uppercase tracking-[0.18em] text-mauve-200 mb-1.5">
+            Leave a Wish for Michael &amp; Demiana
+          </label>
+          <textarea
+            id="guest-wish"
+            rows="3"
+            placeholder="Write a sweet message for the couple..."
+            class="w-full px-4 py-3 rounded-2xl bg-white/95 text-ink placeholder-mauve-400 text-sm focus:outline-none focus:ring-2 focus:ring-mauve-300 resize-none"
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-[#D8C4BE] via-[#EFE5E1] to-[#C9B1AA] text-ink font-sans text-xs font-semibold uppercase tracking-[0.22em] shadow-lg hover:brightness-105 active:scale-[0.99] transition"
+        >
+          Send RSVP &amp; Wish 💌
+        </button>
+      </form>
+
+      <!-- Live Wishes Wall -->
+      <div class="max-w-sm mx-auto mt-8">
+        <p class="font-sans text-[10px] uppercase tracking-[0.25em] text-mauve-300 text-center mb-3">
+          Notes &amp; Wishes
+        </p>
+        <div id="wishes-list" class="space-y-2.5 max-h-56 overflow-y-auto pr-1">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Closing Footer -->
+      <footer class="mt-12 pt-8 border-t border-white/10 text-center">
+        <p class="font-script text-4xl text-mauve-200 mb-1">
+          Michael &amp; Demiana
+        </p>
+        <p class="font-sans text-[10px] uppercase tracking-[0.28em] text-mauve-300/80">
+          See you there! 🥳 &nbsp;•&nbsp; 20.11.2026
+        </p>
+      </footer>
+    </section>
+
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const EVENT_URL = 'https://maps.app.goo.gl/RQ1gkwACpPt5XA6s7';
+      const EVENT_DATE = new Date('2026-11-20T19:00:00');
+
+      /* ============================================================
+         1. TOAST NOTIFICATION HELPER (Never uses alert())
+      ============================================================ */
+      const toastBanner = document.getElementById('toast-banner');
+      const toastMessage = document.getElementById('toast-message');
+      let toastTimer = null;
+
+      function showToast(msg) {
+        toastMessage.textContent = msg;
+        toastBanner.classList.remove('opacity-0', 'pointer-events-none');
+        toastBanner.classList.add('opacity-100');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          toastBanner.classList.add('opacity-0', 'pointer-events-none');
+          toastBanner.classList.remove('opacity-100');
+        }, 3000);
+      }
+
+      /* ============================================================
+         2. AMBIENT ROMANTIC PIANO/CHIME SYNTHESIZER (WEB AUDIO API)
+      ============================================================ */
+      let audioCtx = null;
+      let isMusicPlaying = false;
+      let melodyInterval = null;
+      const musicToggleBtn = document.getElementById('music-toggle-btn');
+      const musicIconOn = document.getElementById('music-icon-on');
+      const musicIconOff = document.getElementById('music-icon-off');
+
+      // Gentle romantic arpeggio notes (Fmaj7 -> Cmaj7 -> Dm7 -> Bbmaj7)
+      const romanticNotes = [
+        349.23, 440.00, 523.25, 659.25,
+        261.63, 329.63, 392.00, 493.88,
+        293.66, 349.23, 440.00, 523.25,
+        233.08, 293.66, 349.23, 440.00
+      ];
+      let noteIndex = 0;
+
+      function playGentleNote(freq) {
+        if (!audioCtx || !isMusicPlaying) return;
+        const now = audioCtx.currentTime;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, now);
+
+        gain.gain.setValueAtTime(0.0001, now);
+        gain.gain.exponentialRampToValueAtTime(0.045, now + 0.12);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 2.4);
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        osc.start(now);
+        osc.stop(now + 2.5);
+      }
+
+      function startAmbientMusic() {
+        try {
+          if (!audioCtx) {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+          }
+          if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+          }
+          if (isMusicPlaying) return;
+          isMusicPlaying = true;
+          musicIconOn.classList.remove('hidden');
+          musicIconOff.classList.add('hidden');
+
+          playGentleNote(romanticNotes[noteIndex % romanticNotes.length]);
+          noteIndex++;
+          melodyInterval = setInterval(() => {
+            playGentleNote(romanticNotes[noteIndex % romanticNotes.length]);
+            noteIndex++;
+          }, 850);
+        } catch (err) {
+          console.warn('Web Audio initialization skipped:', err);
+        }
+      }
+
+      function stopAmbientMusic() {
+        isMusicPlaying = false;
+        clearInterval(melodyInterval);
+        musicIconOn.classList.add('hidden');
+        musicIconOff.classList.remove('hidden');
+      }
+
+      musicToggleBtn.addEventListener('click', () => {
+        if (isMusicPlaying) {
+          stopAmbientMusic();
+          showToast('Music muted');
+        } else {
+          startAmbientMusic();
+          showToast('Playing romantic melody 🎶');
+        }
+      });
+
+      /* ============================================================
+         3. ENVELOPE WAX SEAL & SATIN RIBBON INTERACTION
+      ============================================================ */
+      const envelopeStage = document.getElementById('envelope-stage');
+      const envelopeCard = document.getElementById('envelope-card');
+      const ribbonLayer = document.getElementById('ribbon-layer');
+      const waxSealBtn = document.getElementById('wax-seal-btn');
+      const untieRibbonBtn = document.getElementById('untie-ribbon-btn');
+      const skipIntroBtn = document.getElementById('skip-intro-btn');
+
+      let envelopeOpened = false;
+
+      function openEnvelopeFlaps() {
+        if (envelopeOpened) return;
+        envelopeOpened = true;
+        envelopeCard.classList.add('envelope-opened');
+        // Gently start ambient audio on first user gesture
+        startAmbientMusic();
+      }
+
+      function untieRibbonAndReveal() {
+        ribbonLayer.classList.add('ribbon-untying');
+        setTimeout(() => {
+          envelopeStage.classList.add('stage-hidden');
+          triggerScrollReveals();
+        }, 700);
+      }
+
+      waxSealBtn.addEventListener('click', openEnvelopeFlaps);
+      waxSealBtn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') openEnvelopeFlaps();
+      });
+
+      untieRibbonBtn.addEventListener('click', untieRibbonAndReveal);
+
+      skipIntroBtn.addEventListener('click', () => {
+        envelopeStage.classList.add('stage-hidden');
+        triggerScrollReveals();
+      });
+
+      /* ============================================================
+         4. REAL-TIME COUNTDOWN TIMER TO FRIDAY, 20 NOV 2026 7:00 PM
+      ============================================================ */
+      const cdDays = document.getElementById('cd-days');
+      const cdHours = document.getElementById('cd-hours');
+      const cdMinutes = document.getElementById('cd-minutes');
+      const cdSeconds = document.getElementById('cd-seconds');
+
+      function updateCountdown() {
+        const now = new Date();
+        const diff = EVENT_DATE.getTime() - now.getTime();
+
+        if (diff <= 0) {
+          cdDays.textContent = '00';
+          cdHours.textContent = '00';
+          cdMinutes.textContent = '00';
+          cdSeconds.textContent = '00';
+          return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+
+        cdDays.textContent = String(days).padStart(2, '0');
+        cdHours.textContent = String(hours).padStart(2, '0');
+        cdMinutes.textContent = String(minutes).padStart(2, '0');
+        cdSeconds.textContent = String(seconds).padStart(2, '0');
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+
+      /* ============================================================
+         5. INTERACTIVE OVAL SCRATCH-TO-REVEAL CANVAS
+      ============================================================ */
+      const scratchCanvas = document.getElementById('scratch-canvas');
+      const resetScratchBtn = document.getElementById('reset-scratch-btn');
+      const ctx = scratchCanvas.getContext('2d');
+      let isDrawing = false;
+      let isRevealed = false;
+
+      function initScratchCanvas() {
+        isRevealed = false;
+        scratchCanvas.style.opacity = '1';
+        scratchCanvas.style.pointerEvents = 'auto';
+
+        const rect = scratchCanvas.parentElement.getBoundingClientRect();
+        const dpr = window.devicePixelRatio || 1;
+        scratchCanvas.width = (rect.width || 226) * dpr;
+        scratchCanvas.height = (rect.height || 286) * dpr;
+        ctx.scale(dpr, dpr);
+
+        const w = rect.width || 226;
+        const h = rect.height || 286;
+
+        // Metallic Champagne-Mauve Foil Gradient
+        const grad = ctx.createLinearGradient(0, 0, w, h);
+        grad.addColorStop(0, '#B9A39C');
+        grad.addColorStop(0.3, '#E8DCD8');
+        grad.addColorStop(0.55, '#9F867F');
+        grad.addColorStop(0.8, '#DFD2CE');
+        grad.addColorStop(1, '#8C736C');
+
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, w, h);
+
+        // Subtle Shimmer Speckles
+        for (let i = 0; i < 240; i++) {
+          ctx.fillStyle = i % 2 === 0 ? 'rgba(255,255,255,0.22)' : 'rgba(70,52,48,0.12)';
+          ctx.fillRect(Math.random() * w, Math.random() * h, 2, 2);
+        }
+
+        // Embossed Prompt Text on Foil
+        ctx.fillStyle = '#3C2E2B';
+        ctx.font = 'italic 22px "Cormorant Garamond", serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('Scratch to', w / 2, h / 2 - 12);
+        ctx.fillText('reveal!', w / 2, h / 2 + 14);
+      }
+
+      function getPointerPos(e) {
+        const rect = scratchCanvas.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        return {
+          x: clientX - rect.left,
+          y: clientY - rect.top
+        };
+      }
+
+      function scratchAt(pos) {
+        if (isRevealed) return;
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.beginPath();
+        ctx.arc(pos.x, pos.y, 24, 0, Math.PI * 2);
+        ctx.fill();
+        checkScratchPercentage();
+      }
+
+      let checkThrottle = 0;
+      function checkScratchPercentage() {
+        checkThrottle++;
+        if (checkThrottle % 10 !== 0) return;
+        try {
+          const imgData = ctx.getImageData(0, 0, scratchCanvas.width, scratchCanvas.height).data;
+          let transparentPixels = 0;
+          const totalSampled = imgData.length / 16;
+          for (let i = 3; i < imgData.length; i += 16) {
+            if (imgData[i] < 128) transparentPixels++;
+          }
+          if (transparentPixels / totalSampled > 0.45) {
+            isRevealed = true;
+            scratchCanvas.style.opacity = '0';
+            scratchCanvas.style.pointerEvents = 'none';
+            showToast('Save the date: 20 • 11 • 2026 💍');
+          }
+        } catch (err) {
+          // Ignore cross-origin edge cases if any
+        }
+      }
+
+      scratchCanvas.addEventListener('mousedown', (e) => { isDrawing = true; scratchAt(getPointerPos(e)); });
+      window.addEventListener('mouseup', () => { isDrawing = false; });
+      scratchCanvas.addEventListener('mousemove', (e) => { if (isDrawing) scratchAt(getPointerPos(e)); });
+
+      scratchCanvas.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        isDrawing = true;
+        scratchAt(getPointerPos(e));
+      }, { passive: false });
+      scratchCanvas.addEventListener('touchmove', (e) => {
+        e.preventDefault();
+        if (isDrawing) scratchAt(getPointerPos(e));
+      }, { passive: false });
+      scratchCanvas.addEventListener('touchend', () => { isDrawing = false; });
+
+      resetScratchBtn.addEventListener('click', initScratchCanvas);
+      initScratchCanvas();
+
+      /* ============================================================
+         6. SCANNABLE QR CODE & CALENDAR / CLIPBOARD ACTIONS
+      ============================================================ */
+      const qrContainer = document.getElementById('location-qrcode');
+      if (typeof QRCode !== 'undefined') {
+        new QRCode(qrContainer, {
+          text: EVENT_URL,
+          width: 144,
+          height: 144,
+          colorDark: '#241E1C',
+          colorLight: '#FFFFFF',
+          correctLevel: QRCode.CorrectLevel.M
+        });
+      }
+
+      // Copy Map Link via document.execCommand('copy')
+      document.getElementById('copy-link-btn').addEventListener('click', () => {
+        const tempInput = document.createElement('input');
+        tempInput.value = EVENT_URL;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        try {
+          document.execCommand('copy');
+          showToast('Location link copied to clipboard! 📍');
+        } catch (err) {
+          showToast('Link: ' + EVENT_URL);
+        }
+        document.body.removeChild(tempInput);
+      });
+
+      // Download .ics Calendar Invite
+      document.getElementById('add-calendar-btn').addEventListener('click', () => {
+        const icsContent = [
+          'BEGIN:VCALENDAR',
+          'VERSION:2.0',
+          'PRODID:-//Michael & Demiana Engagement//EN',
+          'BEGIN:VEVENT',
+          'UID:michael-demiana-engagement-20261120@invite',
+          'DTSTAMP:20261117T000000Z',
+          'DTSTART:20261120T170000Z',
+          'DTEND:20261120T220000Z',
+          'SUMMARY:Michael & Demiana Engagement Celebration 💍',
+          'DESCRIPTION:Okay it\'s official! Michael & Demiana are getting engaged! Come celebrate, dance and take way too many photos with us.',
+          'LOCATION:' + EVENT_URL,
+          'END:VEVENT',
+          'END:VCALENDAR'
+        ].join('\r\n');
+
+        const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'Michael_and_Demiana_Engagement.ics';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        showToast('Calendar invite downloaded! 🗓️');
+      });
+
+      /* ============================================================
+         7. INTERACTIVE RSVP FORM & LOCAL WISHES WALL
+      ============================================================ */
+      const rsvpForm = document.getElementById('rsvp-form');
+      const wishesList = document.getElementById('wishes-list');
+
+      const defaultWishes = [
+        {
+          name: 'George & Marina',
+          status: 'Joyfully Accepts',
+          guests: '2',
+          wish: 'So happy for you both! Counting down the days to celebrate with you 🥂💍'
+        },
+        {
+          name: 'Nourhan M.',
+          status: 'Joyfully Accepts',
+          guests: '1',
+          wish: 'Congratulations Michael & Demiana! Ready to dance all night 💃✨'
+        }
+      ];
+
+      function loadWishes() {
+        let saved = [];
+        try {
+          saved = JSON.parse(localStorage.getItem('md_engagement_wishes') || '[]');
+        } catch (e) {
+          saved = [];
+        }
+        const allWishes = [...saved, ...defaultWishes];
+        wishesList.innerHTML = allWishes.map(item => `
+          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 text-left">
+            <div class="flex items-center justify-between gap-2 mb-1">
+              <span class="font-serif text-base font-semibold text-white">${escapeHTML(item.name)}</span>
+              <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-mauve-500/30 text-mauve-200 border border-mauve-400/20">
+                ${escapeHTML(item.status)}
+              </span>
+            </div>
+            ${item.wish ? `<p class="text-xs text-mauve-100/90 leading-relaxed">"${escapeHTML(item.wish)}"</p>` : ''}
+          </div>
+        `).join('');
+      }
+
+      function escapeHTML(str) {
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+
+      rsvpForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const nameInput = document.getElementById('guest-name');
+        const statusInput = document.getElementById('guest-status');
+        const countInput = document.getElementById('guest-count');
+        const wishInput = document.getElementById('guest-wish');
+
+        const entry = {
+          name: nameInput.value.trim(),
+          status: statusInput.value,
+          guests: countInput.value,
+          wish: wishInput.value.trim()
+        };
+
+        if (!entry.name) return;
+
+        try {
+          const existing = JSON.parse(localStorage.getItem('md_engagement_wishes') || '[]');
+          existing.unshift(entry);
+          localStorage.setItem('md_engagement_wishes', JSON.stringify(existing));
+        } catch (err) {
+          // Fallback if storage restricted
+        }
+
+        loadWishes();
+        rsvpForm.reset();
+        showToast('Thank you! Your RSVP has been sent 🤍');
+      });
+
+      loadWishes();
+
+      /* ============================================================
+         8. SCROLL REVEAL ANIMATION OBSERVER
+      ============================================================ */
+      function triggerScrollReveals() {
+        const revealEls = document.querySelectorAll('.reveal-on-scroll');
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+            }
+          });
+        }, { threshold: 0.12 });
+
+        revealEls.forEach(el => observer.observe(el));
+      }
+
+      triggerScrollReveals();
+    });
+  </script>
+</body>
+</html>
